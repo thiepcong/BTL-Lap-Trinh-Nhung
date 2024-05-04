@@ -7,8 +7,9 @@ class ConvertState with _$ConvertState {
   const ConvertState._();
 
   const factory ConvertState({
-    @Default(0) double pitch,
-    @Default(0) double speed,
+    @Default(1) double pitch,
+    @Default(1) double speed,
+    @Default(1) double volumn,
     String? message,
     Error? error,
   }) = _ConvertState;

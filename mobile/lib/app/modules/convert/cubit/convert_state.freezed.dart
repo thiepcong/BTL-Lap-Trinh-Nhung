@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ConvertState {
   double get pitch => throw _privateConstructorUsedError;
   double get speed => throw _privateConstructorUsedError;
+  double get volumn => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   Error? get error => throw _privateConstructorUsedError;
 
@@ -32,7 +33,12 @@ abstract class $ConvertStateCopyWith<$Res> {
           ConvertState value, $Res Function(ConvertState) then) =
       _$ConvertStateCopyWithImpl<$Res, ConvertState>;
   @useResult
-  $Res call({double pitch, double speed, String? message, Error? error});
+  $Res call(
+      {double pitch,
+      double speed,
+      double volumn,
+      String? message,
+      Error? error});
 }
 
 /// @nodoc
@@ -50,6 +56,7 @@ class _$ConvertStateCopyWithImpl<$Res, $Val extends ConvertState>
   $Res call({
     Object? pitch = null,
     Object? speed = null,
+    Object? volumn = null,
     Object? message = freezed,
     Object? error = freezed,
   }) {
@@ -61,6 +68,10 @@ class _$ConvertStateCopyWithImpl<$Res, $Val extends ConvertState>
       speed: null == speed
           ? _value.speed
           : speed // ignore: cast_nullable_to_non_nullable
+              as double,
+      volumn: null == volumn
+          ? _value.volumn
+          : volumn // ignore: cast_nullable_to_non_nullable
               as double,
       message: freezed == message
           ? _value.message
@@ -82,7 +93,12 @@ abstract class _$$ConvertStateImplCopyWith<$Res>
       __$$ConvertStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({double pitch, double speed, String? message, Error? error});
+  $Res call(
+      {double pitch,
+      double speed,
+      double volumn,
+      String? message,
+      Error? error});
 }
 
 /// @nodoc
@@ -98,6 +114,7 @@ class __$$ConvertStateImplCopyWithImpl<$Res>
   $Res call({
     Object? pitch = null,
     Object? speed = null,
+    Object? volumn = null,
     Object? message = freezed,
     Object? error = freezed,
   }) {
@@ -109,6 +126,10 @@ class __$$ConvertStateImplCopyWithImpl<$Res>
       speed: null == speed
           ? _value.speed
           : speed // ignore: cast_nullable_to_non_nullable
+              as double,
+      volumn: null == volumn
+          ? _value.volumn
+          : volumn // ignore: cast_nullable_to_non_nullable
               as double,
       message: freezed == message
           ? _value.message
@@ -126,7 +147,11 @@ class __$$ConvertStateImplCopyWithImpl<$Res>
 
 class _$ConvertStateImpl extends _ConvertState {
   const _$ConvertStateImpl(
-      {this.pitch = 0, this.speed = 0, this.message, this.error})
+      {this.pitch = 1,
+      this.speed = 1,
+      this.volumn = 1,
+      this.message,
+      this.error})
       : super._();
 
   @override
@@ -136,13 +161,16 @@ class _$ConvertStateImpl extends _ConvertState {
   @JsonKey()
   final double speed;
   @override
+  @JsonKey()
+  final double volumn;
+  @override
   final String? message;
   @override
   final Error? error;
 
   @override
   String toString() {
-    return 'ConvertState(pitch: $pitch, speed: $speed, message: $message, error: $error)';
+    return 'ConvertState(pitch: $pitch, speed: $speed, volumn: $volumn, message: $message, error: $error)';
   }
 
   @override
@@ -152,12 +180,14 @@ class _$ConvertStateImpl extends _ConvertState {
             other is _$ConvertStateImpl &&
             (identical(other.pitch, pitch) || other.pitch == pitch) &&
             (identical(other.speed, speed) || other.speed == speed) &&
+            (identical(other.volumn, volumn) || other.volumn == volumn) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pitch, speed, message, error);
+  int get hashCode =>
+      Object.hash(runtimeType, pitch, speed, volumn, message, error);
 
   @JsonKey(ignore: true)
   @override
@@ -170,6 +200,7 @@ abstract class _ConvertState extends ConvertState {
   const factory _ConvertState(
       {final double pitch,
       final double speed,
+      final double volumn,
       final String? message,
       final Error? error}) = _$ConvertStateImpl;
   const _ConvertState._() : super._();
@@ -178,6 +209,8 @@ abstract class _ConvertState extends ConvertState {
   double get pitch;
   @override
   double get speed;
+  @override
+  double get volumn;
   @override
   String? get message;
   @override

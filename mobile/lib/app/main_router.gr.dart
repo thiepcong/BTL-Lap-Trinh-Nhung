@@ -29,6 +29,12 @@ class _$MainRouter extends RootStackRouter {
         child: const ConvertView(),
       );
     },
+    ListBluetoothViewRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const ListBluetoothView(),
+      );
+    },
   };
 
   @override
@@ -46,6 +52,10 @@ class _$MainRouter extends RootStackRouter {
         RouteConfig(
           ConvertViewRoute.name,
           path: 'convert',
+        ),
+        RouteConfig(
+          ListBluetoothViewRoute.name,
+          path: 'list_bluetooth',
         ),
       ];
 }
@@ -72,4 +82,16 @@ class ConvertViewRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ConvertViewRoute';
+}
+
+/// generated route for
+/// [ListBluetoothView]
+class ListBluetoothViewRoute extends PageRouteInfo<void> {
+  const ListBluetoothViewRoute()
+      : super(
+          ListBluetoothViewRoute.name,
+          path: 'list_bluetooth',
+        );
+
+  static const String name = 'ListBluetoothViewRoute';
 }

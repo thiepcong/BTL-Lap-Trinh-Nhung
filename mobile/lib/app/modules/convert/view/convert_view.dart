@@ -70,6 +70,32 @@ class _ConvertViewState extends State<ConvertView> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         const Text(
+                          "Volumn",
+                          style: TextStyles.mediumBlackS14,
+                        ),
+                        const SizedBox(height: 8),
+                        SliderTheme(
+                          data: SliderThemeData(
+                            trackHeight: 2,
+                            thumbShape: const RoundSliderThumbShape(
+                                enabledThumbRadius: 6),
+                            overlayShape: SliderComponentShape.noOverlay,
+                          ),
+                          child: Slider(
+                            onChanged: (value) {
+                              cubit.setVolumn(value);
+                            },
+                            value: state.volumn,
+                            min: 0,
+                            max: 1,
+                            divisions: 100,
+                            thumbColor: AppColors.colorFFFFFFFF,
+                            activeColor: AppColors.colorFF28384B,
+                            inactiveColor: AppColors.colorFFc1bebe,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        const Text(
                           "Pitch",
                           style: TextStyles.mediumBlackS14,
                         ),
@@ -87,7 +113,7 @@ class _ConvertViewState extends State<ConvertView> {
                             },
                             value: state.pitch,
                             min: 0,
-                            max: 100,
+                            max: 2,
                             divisions: 100,
                             thumbColor: AppColors.colorFFFFFFFF,
                             activeColor: AppColors.colorFF28384B,
@@ -113,7 +139,7 @@ class _ConvertViewState extends State<ConvertView> {
                             },
                             value: state.speed,
                             min: 0,
-                            max: 100,
+                            max: 2,
                             divisions: 100,
                             thumbColor: AppColors.colorFFFFFFFF,
                             activeColor: AppColors.colorFF28384B,
@@ -126,7 +152,9 @@ class _ConvertViewState extends State<ConvertView> {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    cubit.speak();
+                  },
                   icon: Container(
                       padding: const EdgeInsets.all(12),
                       margin: const EdgeInsets.all(8),

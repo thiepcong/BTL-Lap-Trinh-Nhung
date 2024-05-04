@@ -74,7 +74,9 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.3,
                       child: PrimaryButton(
-                        onTap: () {},
+                        onTap: () {
+                          context.pushRoute(const ListBluetoothViewRoute());
+                        },
                         backgroundColor: AppColors.colorFFFFFFFF,
                         textColor: AppColors.colorFF000000,
                         textSize: 32,
