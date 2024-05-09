@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'list_bluetooth_state.dart';
@@ -8,26 +6,38 @@ class ListBluetoothCubit extends Cubit<ListBluetoothState> {
   ListBluetoothCubit() : super(const ListBluetoothState());
 
   void init() async {
-    final check = await FlutterBluePlus.isSupported;
-    if (!check) return;
+    try {
+      final check = await FlutterBluePlus.isSupported;
+      if (!check) return;
 
-    await FlutterBluePlus.turnOn();
+      await FlutterBluePlus.turnOn();
+      FlutterBluePlus.scanResults.listen((event) {
+        try {
+          emit(state.copyWith(devices: event));
+        } catch (e) {
+          if (e is StateError) return;
+          rethrow;
+        }
+      });
+      final li = await FlutterBluePlus.systemDevices;
+      emit(state.copyWith(connectedDevices: li));
+    } catch (e) {
+      rethrow;
+    }
+  }
 
-    FlutterBluePlus.adapterState.listen((event) {
-      log(event.toString());
-    });
+  void scanDevice() async {
+    try {
+      FlutterBluePlus.startScan(timeout: const Duration(seconds: 5));
 
-    await FlutterBluePlus.startScan();
-    FlutterBluePlus.onScanResults.listen((event) {
-      log(event.toString());
-      try {
-        emit(state.copyWith(
-            bluetooths: event.map((e) => e.toString()).toList()));
-      } catch (e) {
-        return;
-      }
-    });
-    await Future.delayed(const Duration(seconds: 20));
-    FlutterBluePlus.stopScan();
+      await Future.delayed(const Duration(seconds: 10));
+      FlutterBluePlus.stopScan();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  void connectToDevice(String remoteId) async {
+    await BluetoothDevice.fromId(remoteId).connect();
   }
 }

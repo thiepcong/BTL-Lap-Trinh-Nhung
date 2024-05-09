@@ -17,6 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ListBluetoothState {
   List<String> get bluetooths => throw _privateConstructorUsedError;
+  List<ScanResult> get devices => throw _privateConstructorUsedError;
+  List<BluetoothDevice> get connectedDevices =>
+      throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   Error? get error => throw _privateConstructorUsedError;
 
@@ -31,7 +34,12 @@ abstract class $ListBluetoothStateCopyWith<$Res> {
           ListBluetoothState value, $Res Function(ListBluetoothState) then) =
       _$ListBluetoothStateCopyWithImpl<$Res, ListBluetoothState>;
   @useResult
-  $Res call({List<String> bluetooths, String? message, Error? error});
+  $Res call(
+      {List<String> bluetooths,
+      List<ScanResult> devices,
+      List<BluetoothDevice> connectedDevices,
+      String? message,
+      Error? error});
 }
 
 /// @nodoc
@@ -48,6 +56,8 @@ class _$ListBluetoothStateCopyWithImpl<$Res, $Val extends ListBluetoothState>
   @override
   $Res call({
     Object? bluetooths = null,
+    Object? devices = null,
+    Object? connectedDevices = null,
     Object? message = freezed,
     Object? error = freezed,
   }) {
@@ -56,6 +66,14 @@ class _$ListBluetoothStateCopyWithImpl<$Res, $Val extends ListBluetoothState>
           ? _value.bluetooths
           : bluetooths // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      devices: null == devices
+          ? _value.devices
+          : devices // ignore: cast_nullable_to_non_nullable
+              as List<ScanResult>,
+      connectedDevices: null == connectedDevices
+          ? _value.connectedDevices
+          : connectedDevices // ignore: cast_nullable_to_non_nullable
+              as List<BluetoothDevice>,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -76,7 +94,12 @@ abstract class _$$ListBluetoothStateImplCopyWith<$Res>
       __$$ListBluetoothStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<String> bluetooths, String? message, Error? error});
+  $Res call(
+      {List<String> bluetooths,
+      List<ScanResult> devices,
+      List<BluetoothDevice> connectedDevices,
+      String? message,
+      Error? error});
 }
 
 /// @nodoc
@@ -91,6 +114,8 @@ class __$$ListBluetoothStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? bluetooths = null,
+    Object? devices = null,
+    Object? connectedDevices = null,
     Object? message = freezed,
     Object? error = freezed,
   }) {
@@ -99,6 +124,14 @@ class __$$ListBluetoothStateImplCopyWithImpl<$Res>
           ? _value._bluetooths
           : bluetooths // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      devices: null == devices
+          ? _value._devices
+          : devices // ignore: cast_nullable_to_non_nullable
+              as List<ScanResult>,
+      connectedDevices: null == connectedDevices
+          ? _value._connectedDevices
+          : connectedDevices // ignore: cast_nullable_to_non_nullable
+              as List<BluetoothDevice>,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -115,8 +148,14 @@ class __$$ListBluetoothStateImplCopyWithImpl<$Res>
 
 class _$ListBluetoothStateImpl extends _ListBluetoothState {
   const _$ListBluetoothStateImpl(
-      {final List<String> bluetooths = const [], this.message, this.error})
+      {final List<String> bluetooths = const [],
+      final List<ScanResult> devices = const [],
+      final List<BluetoothDevice> connectedDevices = const [],
+      this.message,
+      this.error})
       : _bluetooths = bluetooths,
+        _devices = devices,
+        _connectedDevices = connectedDevices,
         super._();
 
   final List<String> _bluetooths;
@@ -128,6 +167,25 @@ class _$ListBluetoothStateImpl extends _ListBluetoothState {
     return EqualUnmodifiableListView(_bluetooths);
   }
 
+  final List<ScanResult> _devices;
+  @override
+  @JsonKey()
+  List<ScanResult> get devices {
+    if (_devices is EqualUnmodifiableListView) return _devices;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_devices);
+  }
+
+  final List<BluetoothDevice> _connectedDevices;
+  @override
+  @JsonKey()
+  List<BluetoothDevice> get connectedDevices {
+    if (_connectedDevices is EqualUnmodifiableListView)
+      return _connectedDevices;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_connectedDevices);
+  }
+
   @override
   final String? message;
   @override
@@ -135,7 +193,7 @@ class _$ListBluetoothStateImpl extends _ListBluetoothState {
 
   @override
   String toString() {
-    return 'ListBluetoothState(bluetooths: $bluetooths, message: $message, error: $error)';
+    return 'ListBluetoothState(bluetooths: $bluetooths, devices: $devices, connectedDevices: $connectedDevices, message: $message, error: $error)';
   }
 
   @override
@@ -145,13 +203,21 @@ class _$ListBluetoothStateImpl extends _ListBluetoothState {
             other is _$ListBluetoothStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._bluetooths, _bluetooths) &&
+            const DeepCollectionEquality().equals(other._devices, _devices) &&
+            const DeepCollectionEquality()
+                .equals(other._connectedDevices, _connectedDevices) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_bluetooths), message, error);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_bluetooths),
+      const DeepCollectionEquality().hash(_devices),
+      const DeepCollectionEquality().hash(_connectedDevices),
+      message,
+      error);
 
   @JsonKey(ignore: true)
   @override
@@ -164,12 +230,18 @@ class _$ListBluetoothStateImpl extends _ListBluetoothState {
 abstract class _ListBluetoothState extends ListBluetoothState {
   const factory _ListBluetoothState(
       {final List<String> bluetooths,
+      final List<ScanResult> devices,
+      final List<BluetoothDevice> connectedDevices,
       final String? message,
       final Error? error}) = _$ListBluetoothStateImpl;
   const _ListBluetoothState._() : super._();
 
   @override
   List<String> get bluetooths;
+  @override
+  List<ScanResult> get devices;
+  @override
+  List<BluetoothDevice> get connectedDevices;
   @override
   String? get message;
   @override

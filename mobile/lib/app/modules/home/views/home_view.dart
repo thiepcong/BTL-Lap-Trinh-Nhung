@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../core/values/show_message_internal.dart';
 import '../../../core/values/text_styles.dart';
+import '../../../core/widgets/appBar/custom_appbar.dart';
 import '../../../core/widgets/button/primary_button.dart';
+import '../../../core/widgets/drawer/app_drawer.dart';
 import '../../../main_router.dart';
 import '../cubit/home_cubit.dart';
 import '../cubit/home_state.dart';
@@ -34,6 +36,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return MultiBlocListener(
@@ -51,8 +54,33 @@ class _HomePageState extends State<HomePage> {
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           return Scaffold(
+            key: _key,
             resizeToAvoidBottomInset: false,
             backgroundColor: AppColors.colorFF28384B,
+            appBar: CustomAppBar(
+              leading: IconButton(
+                onPressed: () {
+                  _key.currentState?.openDrawer();
+                },
+                icon: const Padding(
+                  padding: EdgeInsets.only(left: 8.0),
+                  child: Icon(
+                    Icons.list,
+                    color: AppColors.colorFFFFFFFF,
+                  ),
+                ),
+              ),
+              title: 'HomeView',
+            ),
+            drawer: AppDrawer(
+              onHomeTap: () {
+                _key.currentState?.closeDrawer();
+              },
+              onDeviceTap: () {
+                _key.currentState?.closeDrawer();
+                context.pushRoute(const ListBluetoothViewRoute());
+              },
+            ),
             body: Column(
               children: [
                 const SizedBox(height: 40),
@@ -74,9 +102,7 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.3,
                       child: PrimaryButton(
-                        onTap: () {
-                          context.pushRoute(const ListBluetoothViewRoute());
-                        },
+                        onTap: () {},
                         backgroundColor: AppColors.colorFFFFFFFF,
                         textColor: AppColors.colorFF000000,
                         textSize: 32,
