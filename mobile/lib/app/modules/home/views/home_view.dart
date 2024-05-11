@@ -53,6 +53,7 @@ class _HomePageState extends State<HomePage> {
       ],
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
+          final cubit = context.read<HomeCubit>();
           return Scaffold(
             key: _key,
             resizeToAvoidBottomInset: false,
@@ -78,7 +79,11 @@ class _HomePageState extends State<HomePage> {
               },
               onDeviceTap: () {
                 _key.currentState?.closeDrawer();
-                context.pushRoute(const ListBluetoothViewRoute());
+                context.pushRoute( ListBluetoothViewRoute(homeCubit: cubit));
+              },
+              onConvertTap: (){
+                _key.currentState?.closeDrawer();
+                context.pushRoute(const ConvertViewRoute());
               },
             ),
             body: Column(
@@ -91,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                       width: MediaQuery.of(context).size.width * 0.3,
                       child: PrimaryButton(
                         onTap: () {
-                          context.pushRoute(const ConvertViewRoute());
+                          cubit.startListerner();
                         },
                         backgroundColor: AppColors.colorFFFFFFFF,
                         textColor: AppColors.colorFF000000,

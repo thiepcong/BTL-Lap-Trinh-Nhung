@@ -8,6 +8,7 @@ class ListBluetoothState with _$ListBluetoothState {
   const ListBluetoothState._();
 
   const factory ListBluetoothState({
+    BluetoothDevice? currentDevice,
     @Default([]) List<String> bluetooths,
     @Default([]) List<ScanResult> devices,
     @Default([]) List<BluetoothDevice> connectedDevices,

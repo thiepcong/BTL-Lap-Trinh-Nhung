@@ -37,7 +37,11 @@ class ListBluetoothCubit extends Cubit<ListBluetoothState> {
     }
   }
 
-  void connectToDevice(String remoteId) async {
-    await BluetoothDevice.fromId(remoteId).connect();
+  void connectToDevice(BluetoothDevice  device) async {
+    device.connect();
+    emit(state.copyWith(currentDevice: device));
+    // await BluetoothDevice.fromId(device.remoteId.str).connect();
+    // final pre = await SharedPreferences.getInstance();
+    // pre.setString("remoteId", device.remoteId.str);
   }
 }

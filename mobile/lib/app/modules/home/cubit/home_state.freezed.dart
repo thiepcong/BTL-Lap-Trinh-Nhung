@@ -16,6 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$HomeState {
+  BluetoothDevice? get currentDevice => throw _privateConstructorUsedError;
+  String? get currentData => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   Error? get error => throw _privateConstructorUsedError;
 
@@ -29,7 +31,11 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({String? message, Error? error});
+  $Res call(
+      {BluetoothDevice? currentDevice,
+      String? currentData,
+      String? message,
+      Error? error});
 }
 
 /// @nodoc
@@ -45,10 +51,20 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? currentDevice = freezed,
+    Object? currentData = freezed,
     Object? message = freezed,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
+      currentDevice: freezed == currentDevice
+          ? _value.currentDevice
+          : currentDevice // ignore: cast_nullable_to_non_nullable
+              as BluetoothDevice?,
+      currentData: freezed == currentData
+          ? _value.currentData
+          : currentData // ignore: cast_nullable_to_non_nullable
+              as String?,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -69,7 +85,11 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       __$$HomeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? message, Error? error});
+  $Res call(
+      {BluetoothDevice? currentDevice,
+      String? currentData,
+      String? message,
+      Error? error});
 }
 
 /// @nodoc
@@ -83,10 +103,20 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? currentDevice = freezed,
+    Object? currentData = freezed,
     Object? message = freezed,
     Object? error = freezed,
   }) {
     return _then(_$HomeStateImpl(
+      currentDevice: freezed == currentDevice
+          ? _value.currentDevice
+          : currentDevice // ignore: cast_nullable_to_non_nullable
+              as BluetoothDevice?,
+      currentData: freezed == currentData
+          ? _value.currentData
+          : currentData // ignore: cast_nullable_to_non_nullable
+              as String?,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -102,8 +132,14 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$HomeStateImpl extends _HomeState {
-  const _$HomeStateImpl({this.message, this.error}) : super._();
+  const _$HomeStateImpl(
+      {this.currentDevice, this.currentData, this.message, this.error})
+      : super._();
 
+  @override
+  final BluetoothDevice? currentDevice;
+  @override
+  final String? currentData;
   @override
   final String? message;
   @override
@@ -111,7 +147,7 @@ class _$HomeStateImpl extends _HomeState {
 
   @override
   String toString() {
-    return 'HomeState(message: $message, error: $error)';
+    return 'HomeState(currentDevice: $currentDevice, currentData: $currentData, message: $message, error: $error)';
   }
 
   @override
@@ -119,12 +155,17 @@ class _$HomeStateImpl extends _HomeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HomeStateImpl &&
+            (identical(other.currentDevice, currentDevice) ||
+                other.currentDevice == currentDevice) &&
+            (identical(other.currentData, currentData) ||
+                other.currentData == currentData) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message, error);
+  int get hashCode =>
+      Object.hash(runtimeType, currentDevice, currentData, message, error);
 
   @JsonKey(ignore: true)
   @override
@@ -134,10 +175,17 @@ class _$HomeStateImpl extends _HomeState {
 }
 
 abstract class _HomeState extends HomeState {
-  const factory _HomeState({final String? message, final Error? error}) =
-      _$HomeStateImpl;
+  const factory _HomeState(
+      {final BluetoothDevice? currentDevice,
+      final String? currentData,
+      final String? message,
+      final Error? error}) = _$HomeStateImpl;
   const _HomeState._() : super._();
 
+  @override
+  BluetoothDevice? get currentDevice;
+  @override
+  String? get currentData;
   @override
   String? get message;
   @override

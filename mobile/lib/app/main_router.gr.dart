@@ -30,9 +30,13 @@ class _$MainRouter extends RootStackRouter {
       );
     },
     ListBluetoothViewRoute.name: (routeData) {
+      final args = routeData.argsAs<ListBluetoothViewRouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const ListBluetoothView(),
+        child: ListBluetoothView(
+          key: args.key,
+          homeCubit: args.homeCubit,
+        ),
       );
     },
   };
@@ -86,12 +90,34 @@ class ConvertViewRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ListBluetoothView]
-class ListBluetoothViewRoute extends PageRouteInfo<void> {
-  const ListBluetoothViewRoute()
-      : super(
+class ListBluetoothViewRoute extends PageRouteInfo<ListBluetoothViewRouteArgs> {
+  ListBluetoothViewRoute({
+    Key? key,
+    required HomeCubit homeCubit,
+  }) : super(
           ListBluetoothViewRoute.name,
           path: 'list_bluetooth',
+          args: ListBluetoothViewRouteArgs(
+            key: key,
+            homeCubit: homeCubit,
+          ),
         );
 
   static const String name = 'ListBluetoothViewRoute';
+}
+
+class ListBluetoothViewRouteArgs {
+  const ListBluetoothViewRouteArgs({
+    this.key,
+    required this.homeCubit,
+  });
+
+  final Key? key;
+
+  final HomeCubit homeCubit;
+
+  @override
+  String toString() {
+    return 'ListBluetoothViewRouteArgs{key: $key, homeCubit: $homeCubit}';
+  }
 }

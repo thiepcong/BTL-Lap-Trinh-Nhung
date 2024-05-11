@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'app_routes.dart';
 import 'modules/convert/view/convert_view.dart';
+import 'modules/home/cubit/home_cubit.dart';
 import 'modules/home/views/home_view.dart';
 import 'modules/list_bluetooth/view/list_bluetooth_view.dart';
 part 'main_router.gr.dart';

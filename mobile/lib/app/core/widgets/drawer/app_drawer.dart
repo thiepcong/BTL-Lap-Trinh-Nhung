@@ -4,10 +4,16 @@ import '../../values/app_colors.dart';
 import '../../values/text_styles.dart';
 
 class AppDrawer extends StatelessWidget {
-  const AppDrawer({super.key, this.onHomeTap, this.onDeviceTap});
+  const AppDrawer({
+    super.key,
+    this.onHomeTap,
+    this.onDeviceTap,
+    this.onConvertTap,
+  });
 
   final VoidCallback? onHomeTap;
   final VoidCallback? onDeviceTap;
+  final VoidCallback? onConvertTap;
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +55,20 @@ class AppDrawer extends StatelessWidget {
             ),
             onTap: () {
               onDeviceTap?.call();
+            },
+          ),
+          const Divider(color: AppColors.colorFFFFFFFF),
+          ListTile(
+            leading: const Icon(
+              Icons.bluetooth,
+              color: AppColors.colorFFFFFFFF,
+            ),
+            title: const Text(
+              'List Bluetooth',
+              style: TextStyles.mediumWhiteS16,
+            ),
+            onTap: () {
+              onConvertTap?.call();
             },
           ),
         ],

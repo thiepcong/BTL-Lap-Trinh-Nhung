@@ -5,7 +5,7 @@ class DeviceItem extends StatelessWidget {
   const DeviceItem({super.key, required this.item, this.onConnect});
 
   final ScanResult item;
-  final void Function(String remoteId)? onConnect;
+  final void Function(ScanResult item)? onConnect;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class DeviceItem extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            onConnect?.call(item.device.remoteId.str);
+            onConnect?.call(item);
           },
           child: const Text("Connect"),
         ),
