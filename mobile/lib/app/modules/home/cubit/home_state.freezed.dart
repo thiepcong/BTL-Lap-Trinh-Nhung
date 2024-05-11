@@ -16,7 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$HomeState {
-  BluetoothDevice? get currentDevice => throw _privateConstructorUsedError;
+  ble.BluetoothDevice? get currentBleDevice =>
+      throw _privateConstructorUsedError;
+  classic.BluetoothDevice? get currentClassicDevice =>
+      throw _privateConstructorUsedError;
   String? get currentData => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   Error? get error => throw _privateConstructorUsedError;
@@ -32,7 +35,8 @@ abstract class $HomeStateCopyWith<$Res> {
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
   $Res call(
-      {BluetoothDevice? currentDevice,
+      {ble.BluetoothDevice? currentBleDevice,
+      classic.BluetoothDevice? currentClassicDevice,
       String? currentData,
       String? message,
       Error? error});
@@ -51,16 +55,21 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currentDevice = freezed,
+    Object? currentBleDevice = freezed,
+    Object? currentClassicDevice = freezed,
     Object? currentData = freezed,
     Object? message = freezed,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
-      currentDevice: freezed == currentDevice
-          ? _value.currentDevice
-          : currentDevice // ignore: cast_nullable_to_non_nullable
-              as BluetoothDevice?,
+      currentBleDevice: freezed == currentBleDevice
+          ? _value.currentBleDevice
+          : currentBleDevice // ignore: cast_nullable_to_non_nullable
+              as ble.BluetoothDevice?,
+      currentClassicDevice: freezed == currentClassicDevice
+          ? _value.currentClassicDevice
+          : currentClassicDevice // ignore: cast_nullable_to_non_nullable
+              as classic.BluetoothDevice?,
       currentData: freezed == currentData
           ? _value.currentData
           : currentData // ignore: cast_nullable_to_non_nullable
@@ -86,7 +95,8 @@ abstract class _$$HomeStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {BluetoothDevice? currentDevice,
+      {ble.BluetoothDevice? currentBleDevice,
+      classic.BluetoothDevice? currentClassicDevice,
       String? currentData,
       String? message,
       Error? error});
@@ -103,16 +113,21 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currentDevice = freezed,
+    Object? currentBleDevice = freezed,
+    Object? currentClassicDevice = freezed,
     Object? currentData = freezed,
     Object? message = freezed,
     Object? error = freezed,
   }) {
     return _then(_$HomeStateImpl(
-      currentDevice: freezed == currentDevice
-          ? _value.currentDevice
-          : currentDevice // ignore: cast_nullable_to_non_nullable
-              as BluetoothDevice?,
+      currentBleDevice: freezed == currentBleDevice
+          ? _value.currentBleDevice
+          : currentBleDevice // ignore: cast_nullable_to_non_nullable
+              as ble.BluetoothDevice?,
+      currentClassicDevice: freezed == currentClassicDevice
+          ? _value.currentClassicDevice
+          : currentClassicDevice // ignore: cast_nullable_to_non_nullable
+              as classic.BluetoothDevice?,
       currentData: freezed == currentData
           ? _value.currentData
           : currentData // ignore: cast_nullable_to_non_nullable
@@ -133,11 +148,17 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 
 class _$HomeStateImpl extends _HomeState {
   const _$HomeStateImpl(
-      {this.currentDevice, this.currentData, this.message, this.error})
+      {this.currentBleDevice,
+      this.currentClassicDevice,
+      this.currentData,
+      this.message,
+      this.error})
       : super._();
 
   @override
-  final BluetoothDevice? currentDevice;
+  final ble.BluetoothDevice? currentBleDevice;
+  @override
+  final classic.BluetoothDevice? currentClassicDevice;
   @override
   final String? currentData;
   @override
@@ -147,7 +168,7 @@ class _$HomeStateImpl extends _HomeState {
 
   @override
   String toString() {
-    return 'HomeState(currentDevice: $currentDevice, currentData: $currentData, message: $message, error: $error)';
+    return 'HomeState(currentBleDevice: $currentBleDevice, currentClassicDevice: $currentClassicDevice, currentData: $currentData, message: $message, error: $error)';
   }
 
   @override
@@ -155,8 +176,10 @@ class _$HomeStateImpl extends _HomeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HomeStateImpl &&
-            (identical(other.currentDevice, currentDevice) ||
-                other.currentDevice == currentDevice) &&
+            (identical(other.currentBleDevice, currentBleDevice) ||
+                other.currentBleDevice == currentBleDevice) &&
+            (identical(other.currentClassicDevice, currentClassicDevice) ||
+                other.currentClassicDevice == currentClassicDevice) &&
             (identical(other.currentData, currentData) ||
                 other.currentData == currentData) &&
             (identical(other.message, message) || other.message == message) &&
@@ -164,8 +187,8 @@ class _$HomeStateImpl extends _HomeState {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, currentDevice, currentData, message, error);
+  int get hashCode => Object.hash(runtimeType, currentBleDevice,
+      currentClassicDevice, currentData, message, error);
 
   @JsonKey(ignore: true)
   @override
@@ -176,14 +199,17 @@ class _$HomeStateImpl extends _HomeState {
 
 abstract class _HomeState extends HomeState {
   const factory _HomeState(
-      {final BluetoothDevice? currentDevice,
+      {final ble.BluetoothDevice? currentBleDevice,
+      final classic.BluetoothDevice? currentClassicDevice,
       final String? currentData,
       final String? message,
       final Error? error}) = _$HomeStateImpl;
   const _HomeState._() : super._();
 
   @override
-  BluetoothDevice? get currentDevice;
+  ble.BluetoothDevice? get currentBleDevice;
+  @override
+  classic.BluetoothDevice? get currentClassicDevice;
   @override
   String? get currentData;
   @override

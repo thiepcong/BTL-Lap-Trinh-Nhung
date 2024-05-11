@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile/app/core/values/show_message_internal.dart';
 
 import '../../../core/values/app_colors.dart';
 import '../../../core/values/text_styles.dart';
@@ -8,8 +9,8 @@ import '../../../core/widgets/appBar/custom_appbar.dart';
 import '../../home/cubit/home_cubit.dart';
 import '../cubit/list_bluetooth_cubit.dart';
 import '../cubit/list_bluetooth_state.dart';
-import '../widgets/connected_device_item.dart';
-import '../widgets/device_item.dart';
+import '../widgets/classic_device_item.dart';
+import '../widgets/ble_device_item.dart';
 
 class ListBluetoothView extends StatefulWidget {
   const ListBluetoothView({super.key, required this.homeCubit});
@@ -30,14 +31,37 @@ class _ListBluetoothViewState extends State<ListBluetoothView> {
   }
 
   Widget _buildPage(BuildContext context) {
-    return BlocListener<ListBluetoothCubit, ListBluetoothState>(
-      listenWhen: (previous, current) =>
-          previous.currentDevice != current.currentDevice,
-      listener: (context, state) {
-        if (state.currentDevice != null) {
-          widget.homeCubit.setCurrentDevice(state.currentDevice!);
-        }
-      },
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<ListBluetoothCubit, ListBluetoothState>(
+          listenWhen: (previous, current) =>
+              previous.currentBleDevice != current.currentBleDevice,
+          listener: (context, state) {
+            if (state.currentBleDevice != null) {
+              widget.homeCubit.setCurrentBleDevice(state.currentBleDevice!);
+            }
+          },
+        ),
+
+        BlocListener<ListBluetoothCubit, ListBluetoothState>(
+          listenWhen: (previous, current) =>
+              previous.currentBleDevice != current.currentBleDevice,
+          listener: (context, state) {
+            if (state.currentBleDevice != null) {
+              widget.homeCubit.setCurrentBleDevice(state.currentBleDevice!);
+            }
+          },
+        ),
+        BlocListener<ListBluetoothCubit, ListBluetoothState>(
+          listenWhen: (previous, current) =>
+              previous.message != current.message,
+          listener: (context, state) {
+            if (state.message != null) {
+              ShowMessageInternal.showMessage(state.message ?? '');
+            }
+          },
+        ),
+      ],
       child: BlocBuilder<ListBluetoothCubit, ListBluetoothState>(
         builder: (context, state) {
           final cubit = context.read<ListBluetoothCubit>();
@@ -63,7 +87,7 @@ class _ListBluetoothViewState extends State<ListBluetoothView> {
                   const TabBar(
                     // onTap: (i) => context.read<StatCubit>().clean(),
                     tabs: [
-                      Tab(text: 'Connected Device'),
+                      Tab(text: 'Bluetooth Classic'),
                       Tab(text: 'Bluetooth LE'),
                     ],
                   ),
@@ -77,15 +101,19 @@ class _ListBluetoothViewState extends State<ListBluetoothView> {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  cubit.scanDevice();
+                                  cubit.scanDeviceClassic();
                                 },
                                 child: const Text(
                                   "Start Scan",
                                   style: TextStyles.boldBlackS28,
                                 ),
                               ),
-                              ...state.connectedDevices
-                                  .map((e) => ConnectedDeviceItem(item: e))
+                              ...(state.classicDevices as List)
+                                  .map((e) => ClassicDeviceItem(
+                                        item: e,
+                                        onConnect: () =>
+                                            cubit.connectToBleDevice(e),
+                                      ))
                                   .toList(),
                             ],
                           ),
@@ -98,18 +126,18 @@ class _ListBluetoothViewState extends State<ListBluetoothView> {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  cubit.scanDevice();
+                                  cubit.scanDeviceBLe();
                                 },
                                 child: const Text(
                                   "Start Scan",
                                   style: TextStyles.boldBlackS28,
                                 ),
                               ),
-                              ...state.devices
-                                  .map((e) => DeviceItem(
+                              ...(state.bleDevices as List)
+                                  .map((e) => BleDeviceItem(
                                         item: e,
-                                        onConnect: (item) =>
-                                            cubit.connectToDevice(item.device),
+                                        onConnect: (item) => cubit
+                                            .connectToBleDevice(item.device),
                                       ))
                                   .toList(),
                             ],

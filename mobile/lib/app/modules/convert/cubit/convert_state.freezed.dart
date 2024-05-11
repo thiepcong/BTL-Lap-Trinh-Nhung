@@ -16,6 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ConvertState {
+  ble.BluetoothDevice? get currentBleDevice =>
+      throw _privateConstructorUsedError;
+  classic.BluetoothDevice? get currentClassicDevice =>
+      throw _privateConstructorUsedError;
   double get pitch => throw _privateConstructorUsedError;
   double get speed => throw _privateConstructorUsedError;
   double get volumn => throw _privateConstructorUsedError;
@@ -34,7 +38,9 @@ abstract class $ConvertStateCopyWith<$Res> {
       _$ConvertStateCopyWithImpl<$Res, ConvertState>;
   @useResult
   $Res call(
-      {double pitch,
+      {ble.BluetoothDevice? currentBleDevice,
+      classic.BluetoothDevice? currentClassicDevice,
+      double pitch,
       double speed,
       double volumn,
       String? message,
@@ -54,6 +60,8 @@ class _$ConvertStateCopyWithImpl<$Res, $Val extends ConvertState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? currentBleDevice = freezed,
+    Object? currentClassicDevice = freezed,
     Object? pitch = null,
     Object? speed = null,
     Object? volumn = null,
@@ -61,6 +69,14 @@ class _$ConvertStateCopyWithImpl<$Res, $Val extends ConvertState>
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
+      currentBleDevice: freezed == currentBleDevice
+          ? _value.currentBleDevice
+          : currentBleDevice // ignore: cast_nullable_to_non_nullable
+              as ble.BluetoothDevice?,
+      currentClassicDevice: freezed == currentClassicDevice
+          ? _value.currentClassicDevice
+          : currentClassicDevice // ignore: cast_nullable_to_non_nullable
+              as classic.BluetoothDevice?,
       pitch: null == pitch
           ? _value.pitch
           : pitch // ignore: cast_nullable_to_non_nullable
@@ -94,7 +110,9 @@ abstract class _$$ConvertStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {double pitch,
+      {ble.BluetoothDevice? currentBleDevice,
+      classic.BluetoothDevice? currentClassicDevice,
+      double pitch,
       double speed,
       double volumn,
       String? message,
@@ -112,6 +130,8 @@ class __$$ConvertStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? currentBleDevice = freezed,
+    Object? currentClassicDevice = freezed,
     Object? pitch = null,
     Object? speed = null,
     Object? volumn = null,
@@ -119,6 +139,14 @@ class __$$ConvertStateImplCopyWithImpl<$Res>
     Object? error = freezed,
   }) {
     return _then(_$ConvertStateImpl(
+      currentBleDevice: freezed == currentBleDevice
+          ? _value.currentBleDevice
+          : currentBleDevice // ignore: cast_nullable_to_non_nullable
+              as ble.BluetoothDevice?,
+      currentClassicDevice: freezed == currentClassicDevice
+          ? _value.currentClassicDevice
+          : currentClassicDevice // ignore: cast_nullable_to_non_nullable
+              as classic.BluetoothDevice?,
       pitch: null == pitch
           ? _value.pitch
           : pitch // ignore: cast_nullable_to_non_nullable
@@ -147,13 +175,19 @@ class __$$ConvertStateImplCopyWithImpl<$Res>
 
 class _$ConvertStateImpl extends _ConvertState {
   const _$ConvertStateImpl(
-      {this.pitch = 1,
+      {this.currentBleDevice,
+      this.currentClassicDevice,
+      this.pitch = 1,
       this.speed = 1,
       this.volumn = 1,
       this.message,
       this.error})
       : super._();
 
+  @override
+  final ble.BluetoothDevice? currentBleDevice;
+  @override
+  final classic.BluetoothDevice? currentClassicDevice;
   @override
   @JsonKey()
   final double pitch;
@@ -170,7 +204,7 @@ class _$ConvertStateImpl extends _ConvertState {
 
   @override
   String toString() {
-    return 'ConvertState(pitch: $pitch, speed: $speed, volumn: $volumn, message: $message, error: $error)';
+    return 'ConvertState(currentBleDevice: $currentBleDevice, currentClassicDevice: $currentClassicDevice, pitch: $pitch, speed: $speed, volumn: $volumn, message: $message, error: $error)';
   }
 
   @override
@@ -178,6 +212,10 @@ class _$ConvertStateImpl extends _ConvertState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ConvertStateImpl &&
+            (identical(other.currentBleDevice, currentBleDevice) ||
+                other.currentBleDevice == currentBleDevice) &&
+            (identical(other.currentClassicDevice, currentClassicDevice) ||
+                other.currentClassicDevice == currentClassicDevice) &&
             (identical(other.pitch, pitch) || other.pitch == pitch) &&
             (identical(other.speed, speed) || other.speed == speed) &&
             (identical(other.volumn, volumn) || other.volumn == volumn) &&
@@ -186,8 +224,8 @@ class _$ConvertStateImpl extends _ConvertState {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, pitch, speed, volumn, message, error);
+  int get hashCode => Object.hash(runtimeType, currentBleDevice,
+      currentClassicDevice, pitch, speed, volumn, message, error);
 
   @JsonKey(ignore: true)
   @override
@@ -198,13 +236,19 @@ class _$ConvertStateImpl extends _ConvertState {
 
 abstract class _ConvertState extends ConvertState {
   const factory _ConvertState(
-      {final double pitch,
+      {final ble.BluetoothDevice? currentBleDevice,
+      final classic.BluetoothDevice? currentClassicDevice,
+      final double pitch,
       final double speed,
       final double volumn,
       final String? message,
       final Error? error}) = _$ConvertStateImpl;
   const _ConvertState._() : super._();
 
+  @override
+  ble.BluetoothDevice? get currentBleDevice;
+  @override
+  classic.BluetoothDevice? get currentClassicDevice;
   @override
   double get pitch;
   @override
