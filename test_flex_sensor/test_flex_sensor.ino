@@ -5,6 +5,7 @@ int flexPin2 = 35; //35
 int flexPin3 = 33; //33
 int flexPin4 = 32; 
 int flexPin5 = 34; //34
+String check = "";
 
 String device_name = "Bai tap lon mon nhung";
 
@@ -50,7 +51,8 @@ void loop()
 
   
 
-  if(flexVal == 4095 && flexVal2 >= 1700 && flexVal2 <= 2700 && 
+  if(flexVal >= 4000 && flexVal <= 4095 &&
+  flexVal2 >= 1700 && flexVal2 <= 2700 && 
   flexVal3 >= 2000 && flexVal3 <= 3000 && 
   flexVal4 >= 2000 && flexVal4 <= 3000 && 
   flexVal5 >= 2000 && flexVal5 <= 3000){
@@ -59,16 +61,16 @@ void loop()
   }
 
   if(flexVal >= 3000 && flexVal <= 3800 &&
-  flexVal2 == 4095 && 
-  flexVal3 == 4095 && 
-  flexVal4 == 4095 && 
-  flexVal5 == 4095){
+  flexVal2 >= 4000 && flexVal2 <= 4095 &&
+  flexVal3 >= 4000 && flexVal3 <= 4095 &&
+  flexVal4 >= 4000 && flexVal4 <= 4095 &&
+  flexVal5 >= 4000 && flexVal5 <= 4095 ){
     Serial.println("B");
     text = "B";
   }
 
-  if(flexVal == 4095 &&
-  flexVal2 == 4095 && 
+  if(flexVal >= 4000 && flexVal <= 4095 &&
+  flexVal2 >= 4000 && flexVal2 <= 4095 &&
   flexVal3 >= 3000 && flexVal3 <= 3800 && 
   flexVal4 >= 3500 && flexVal4 <= 4095 && 
   flexVal5 >= 3800 && flexVal5 <= 4095 ){
@@ -76,9 +78,9 @@ void loop()
     text = "C";
   }
 
-  if(flexVal == 4095 &&
-  flexVal2 == 4095 && 
-  flexVal3 == 4095 && 
+  if(flexVal >= 4000 && flexVal <= 4095 &&
+  flexVal2 >= 4000 && flexVal2 <= 4095 &&
+  flexVal3 >= 3800 && flexVal3 <= 4095 &&
   flexVal4 >= 3400 && flexVal4 <= 3800 && 
   flexVal5 == 4095 ){
     Serial.println("D");
@@ -88,23 +90,23 @@ void loop()
   if(flexVal >= 700 && flexVal <= 1700 &&
   flexVal2 >= 3000 && flexVal2 <= 4000 &&
   flexVal3 >= 3200 && flexVal3 <= 4095 &&
-  flexVal4 >= 2000 && flexVal4 <= 3000 && 
-  flexVal5 >= 2000 && flexVal5 <= 2800 ){
+  flexVal4 >= 2500 && flexVal4 <= 3500 && 
+  flexVal5 >= 2500 && flexVal5 <= 3500 ){
     Serial.println("E");
     text = "E";
   }
 
   if(flexVal >= 3500 && flexVal <= 4095 &&
   flexVal2 >= 3200 && flexVal2 <= 3800 &&
-  flexVal3 == 4095 &&
-  flexVal4 == 4095 && 
-  flexVal5 == 4095){
+  flexVal3 >= 4000 && flexVal3 <= 4095 &&
+  flexVal4 >= 4000 && flexVal4 <= 4095 &&
+  flexVal5 >= 4000 && flexVal5 <= 4095){
     Serial.println("F");
     text = "F";
   }
 
-  if(flexVal == 4095 &&
-  flexVal2 == 4095 &&
+  if(flexVal >= 4000 && flexVal <= 4095 &&
+  flexVal2 >= 4000 && flexVal2 <= 4095 &&
   flexVal3 >= 1000 && flexVal3 <= 2000 &&
   flexVal4 >= 2800 && flexVal4 <= 3800  && 
   flexVal5 >= 2200 && flexVal5 <= 3200){
@@ -112,36 +114,36 @@ void loop()
     text = "G";
   }
 
-  if(flexVal == 4095 &&
-  flexVal2 == 4095 &&
-  flexVal3 == 4095 &&
+  if(flexVal >= 4000 && flexVal <= 4095 &&
+  flexVal2 >= 4000 && flexVal2 <= 4095 &&
+  flexVal3 >= 4000 && flexVal3 <= 4095 &&
   flexVal4 >= 2200 && flexVal4 <= 3100  && 
   flexVal5 >= 1100 && flexVal5 <= 1900){
     Serial.println("H");
     text = "H";
   }
 
-  if(flexVal == 4095 &&
+  if(flexVal >= 4000 && flexVal <= 4095 &&
   flexVal2 >= 1200 && flexVal2 <= 1800 &&
   flexVal3 >= 3000 && flexVal3 <= 4095 &&
   flexVal4 >= 2900 && flexVal4 <= 3600  && 
-  flexVal5 == 4095){
+  flexVal5 >= 4000 && flexVal5 <= 4095){
     Serial.println("I");
     text = "I";
   }
 
-  if(flexVal == 4095 &&
-  flexVal2 == 4095 &&
+  if(flexVal >= 4000 && flexVal <= 4095 &&
+  flexVal2 >= 4000 && flexVal2 <= 4095 &&
   flexVal3 >= 3000 && flexVal3 <= 3800 &&
   flexVal4 >= 2500 && flexVal4 <= 3200  && 
-  flexVal5 == 4095){
+  flexVal5 >= 4000 && flexVal5 <= 4095){
     Serial.println("J");
     text = "J";
   }
 
   if(flexVal >= 2400 && flexVal <= 3400 &&
-  flexVal2 == 4095 &&
-  flexVal3 == 4095 &&
+  flexVal2 >= 4000 && flexVal2 <= 4095 &&
+  flexVal3 >= 4000 && flexVal3 <= 4095 &&
   flexVal4 >= 2200 && flexVal4 <= 3200  && 
   flexVal5 >= 2200 && flexVal5 <= 3200){
     Serial.println("K");
@@ -175,9 +177,9 @@ void loop()
     text = "N";
   }
 
-  if(flexVal == 4095 &&
-  flexVal2 == 4095 &&
-  flexVal3 == 4095 &&
+  if(flexVal >= 4000 && flexVal <= 4095 &&
+  flexVal2 >= 4000 && flexVal2 <= 4095 &&
+  flexVal3 >= 4000 && flexVal3 <= 4095 &&
   flexVal4 >= 3400 && flexVal4 <= 4000  && 
   flexVal5 >= 2700 && flexVal5 <= 3400){
     Serial.println("O");
@@ -185,15 +187,15 @@ void loop()
   }
 
   if(flexVal >= 1500 && flexVal <= 2000 &&
-  flexVal2 == 4095 &&
+  flexVal2 >= 4000 && flexVal2 <= 4095 &&
   flexVal3 >= 3900 && flexVal3 <= 4095 &&
-  flexVal4 == 4095  && 
-  flexVal5 == 4095){
+  flexVal4 >= 4000 && flexVal4 <= 4095 && 
+  flexVal5 >= 4000 && flexVal5 <= 4095 ){
     Serial.println("P");
     text = "P";
   }
 
-  if(flexVal == 4095 &&
+  if(flexVal >= 4000 && flexVal <= 4095 &&
   flexVal2 >= 3900 && flexVal2 <= 4095 &&
   flexVal3 >= 3500 && flexVal3 <= 4095 &&
   flexVal4 >= 2400 && flexVal4 <= 3000 &&
@@ -202,16 +204,16 @@ void loop()
     text = "Q";
   }
 
-  if(flexVal == 4095 &&
-  flexVal2 == 4095 &&
-  flexVal3 == 4095 &&
+  if(flexVal >= 4000 && flexVal <= 4095 &&
+  flexVal2 >= 4000 && flexVal2 <= 4095 &&
+  flexVal3 >= 4000 && flexVal3 <= 4095 &&
   flexVal4 >= 2700 && flexVal4 <= 3200 &&
-  flexVal5 == 4095){
+  flexVal5 >= 4000 && flexVal5 <= 4095){
     Serial.println("R");
     text = "R";
   }
 
-  if(flexVal == 4095 &&
+  if(flexVal >= 4000 && flexVal <= 4095 &&
   flexVal2 >= 3900 && flexVal2 <= 4095 &&
   flexVal3 >= 1500 && flexVal3 <= 2500 &&
   flexVal4 >= 2300 && flexVal4 <= 2800 &&
@@ -265,17 +267,17 @@ void loop()
     text = "X";
   }
 
-  if(flexVal == 4095 &&
+  if(flexVal >= 4000 && flexVal <= 4095 &&
   flexVal2 >= 2500 && flexVal2 <= 3500 &&
   flexVal3 >= 2500 && flexVal3 <= 3500 &&
   flexVal4 >= 2500 && flexVal4 <= 3500 &&
-  flexVal5 == 4095 ){
+  flexVal5 >= 4000 && flexVal5 <= 4095 ){
     Serial.println("Y");
     text = "Y";
   }
 
-  if(flexVal == 4095 &&
-  flexVal2 == 4095 &&
+  if(flexVal >= 4000 && flexVal <= 4095 &&
+  flexVal2 >= 4000 && flexVal2 <= 4095 &&
   flexVal3 >= 2000 && flexVal3 <= 2700 &&
   flexVal4 >= 1400 && flexVal4 <= 2000 &&
   flexVal5 >= 2300 && flexVal5 <= 3300 ){
@@ -283,25 +285,26 @@ void loop()
     text = "Z";
   }
 
-  if(flexVal == 4095 &&
+  if(flexVal >= 4000 && flexVal <= 4095 &&
   flexVal2 >= 2200 && flexVal2 <= 3200 &&
-  flexVal3 == 4095 &&
+  flexVal3 >= 4000 && flexVal3 <= 4095 &&
   flexVal4 >= 2500 && flexVal4 <= 3500 &&
-  flexVal5 == 4095 ){
+  flexVal5 >= 4000 && flexVal5 <= 4095){
     Serial.println("Space");
-    text = " ";
+    text = "Space";
   }
 
-  if(flexVal == 4095 &&
-  flexVal2 == 4095 &&
+  if(flexVal >= 4000 && flexVal <= 4095 &&
+  flexVal2 >= 4000 && flexVal2 <= 4095 &&
   flexVal3 >= 1000 && flexVal3 <= 2000 &&
-  flexVal4 == 4095 &&
-  flexVal5 == 4095 ){
+  flexVal4 >= 4000 && flexVal4 <= 4095 &&
+  flexVal5 >= 4000 && flexVal5 <= 4095){
     Serial.println("Dot");
     text = ".";
   }
   
-  if(flexVal == 4095 && flexVal2 == 4095 && 
+  if(flexVal >= 4000 && flexVal <= 4095 &&
+  flexVal2 >= 4000 && flexVal2 <= 4095 &&
   flexVal3 >= 2500 && flexVal3 <= 3500 && 
   flexVal4 >= 2000 && flexVal4 <= 3000 && 
   flexVal5 >= 2000 && flexVal5 <= 3000){
@@ -316,66 +319,77 @@ void loop()
     text = "2";
   }
 
-  if(flexVal == 4095 && flexVal2 == 4095 && 
-  flexVal3 == 4095 && flexVal4 >= 2800 && flexVal4 <= 3300 && 
+  if(flexVal >= 4000 && flexVal <= 4095 &&
+  flexVal2 >= 4000 && flexVal2 <= 4095 &&
+  flexVal3 >= 4000 && flexVal3 <= 4095 &&
+  flexVal4 >= 2800 && flexVal4 <= 3300 && 
   flexVal5 >= 2300 && flexVal5 <= 2800){
     Serial.println("3");
     text = "3";
   }
 
-  if(flexVal == 4095 && flexVal2 == 4095 && 
-  flexVal3 == 4095 && 
-  flexVal4 == 4095 &&
+  if(flexVal >= 4000 && flexVal <= 4095 &&
+  flexVal2 >= 4000 && flexVal2 <= 4095 &&
+  flexVal3 >= 4000 && flexVal3 <= 4095 && 
+  flexVal4 >= 4000 && flexVal4 <= 4095 &&
   flexVal5 >= 3000 && flexVal5 <= 4000){
     Serial.println("4");
     text = "4";
   }
 
-  if(flexVal == 4095 && flexVal2 == 4095 && 
-  flexVal3 == 4095 && flexVal4 == 4095 && 
-  flexVal5 == 4095){
+  if(flexVal >= 4000 && flexVal <= 4095 &&
+  flexVal2 >= 4000 && flexVal2 <= 4095 &&
+  flexVal3 >= 4000 && flexVal3 <= 4095 &&
+  flexVal4 >= 4000 && flexVal4 <= 4095 && 
+  flexVal5 >= 4000 && flexVal5 <= 4095){
     Serial.println("5");
     text = "5";
   }
 
-  if(flexVal == 4095 && flexVal2 == 4095 && 
-  flexVal3 == 4095 && flexVal4 == 4095 && 
+  if(flexVal >= 4000 && flexVal <= 4095 &&
+  flexVal2 >= 4000 && flexVal2 <= 4095 &&
+  flexVal3 >= 4000 && flexVal3 <= 4095 &&
+  flexVal4 >= 4000 && flexVal4 <= 4095 &&
   flexVal5 >= 1000 && flexVal5 <= 2000){
     Serial.println("6");
     text = "6";
   } 
 
-  if(flexVal == 4095 && flexVal2 == 4095 && 
-  flexVal3 == 4095 && 
+  if(flexVal >= 4000 && flexVal <= 4095 &&
+  flexVal2 >= 4000 && flexVal2 <= 4095 && 
+  flexVal3 >= 4000 && flexVal3 <= 4095 && 
   flexVal4 >= 1000 && flexVal4 <= 2000 &&
-  flexVal5 == 4095){
+  flexVal5 >= 4000 && flexVal5 <= 4095){
     Serial.println("7");
     text = "7";
   }
 
-  if(flexVal == 4095 && flexVal2 == 4095 && 
+  if(flexVal >= 4000 && flexVal <= 4095 &&
+  flexVal2 >= 4000 && flexVal2 <= 4095 &&
   flexVal3 >= 2000 && flexVal3 <= 2800 &&
-  flexVal4 ==4095 &&
-  flexVal5 == 4095){
+  flexVal4 >= 4000 && flexVal4 <= 4095 &&
+  flexVal5 >= 4000 && flexVal5 <= 4095){
     Serial.println("8");
     text = "8";
   }
 
-  if(flexVal == 4095 &&
+  if(flexVal >= 4000 && flexVal <= 4095 &&
   flexVal2 >= 2000 && flexVal2 <= 3000 &&
-  flexVal3 == 4095 && 
-  flexVal4 == 4095 &&
-  flexVal5 == 4095){
+  flexVal3 >= 4000 && flexVal3 <= 4095 &&
+  flexVal4 >= 4000 && flexVal4 <= 4095 &&
+  flexVal5 >= 4000 && flexVal5 <= 4095){
     Serial.println("9");
     text = "9";
   }
-
   
+  if(text != "" && text != check) {
+    check = text;
+    SerialBT.println(text);
+    Serial.println(text);
+    delay(3000);
+  }
+  else {
+    delay(1000);
+  }
   
-  
-  
-  SerialBT.println(text);
-  Serial.println(text);
-
-  delay(3000);
 }
